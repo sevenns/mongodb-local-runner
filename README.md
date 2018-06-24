@@ -28,7 +28,7 @@ module.exports = {
 
 - Setting *package.json*
 
-``` json
+``` json5
 {
   "scripts": {
     // ...
