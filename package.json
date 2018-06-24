@@ -1,6 +1,6 @@
 {
   "name": "mongolor",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Easy cross-platform run MongoDB server relatively your's projects.",
   "bin": {
     "mongolor": "./bin/mongolor"

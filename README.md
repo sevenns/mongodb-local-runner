@@ -8,7 +8,7 @@
 ### - Installing
 
 ``` bash
-npm install mongolor --save
+npm install mongolor --save-dev
 ```
 
 ### - Using
@@ -26,18 +26,27 @@ module.exports = {
 }
 ```
 
-- Use commands
+- Setting *package.json*
+
+``` json
+{
+  "scripts": {
+    // ...
+    "db:start": "mongolor start",
+    "db:stop": "mongolor stop"
+  }
+}
+```
+
+- Running
 
 ``` bash
 # start service/daemon
 # Note: Windows users must run from the administrator!
-$ mongolor start
-
-# or simply
-$ mongolor
+$ npm run db:start
 
 # stop service/daemon
 # Note: Windows users must run from the administrator!
 #       Windows service will be deleted.
-$ mongolor stop
+$ npm run db:stop
 ```

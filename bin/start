@@ -37,8 +37,8 @@ const messages = {
 clear()
 
 console.log(`${messages.platform} ${chalk.cyan.bold(process.platform)}`)
-console.log(`${messages.port} ${chalk.cyan.bold(config.port)}`)
-console.log(`${messages.host} ${chalk.cyan.bold(config.host)}\n`)
+console.log(`${messages.port} ${chalk.cyan.bold(db.port)}`)
+console.log(`${messages.host} ${chalk.cyan.bold(db.host)}\n`)
 spinner.start(chalk.cyan.bold(messages.starting))
 
 if (process.platform === 'win32') {
