@@ -7,12 +7,16 @@ const { resolve } = require('path')
 const exec = require('executive')
 const paths = require('../config/paths')
 let config = require('../config/mongolor')
+const checkDirectory = require('../helpers/checkDirectory')
 
 const configPath = resolve('mongolor.config.js')
 
 if (fs.existsSync(configPath)) {
   config = require(configPath)
 }
+
+const existsData = checkDirectory(config.data)
+const existsLogs = checkDirectory(config.logs)
 
 const spinner = ora()
 const date = new Date().toDateString().replace(/ /g, '-')
@@ -31,12 +35,21 @@ const messages = {
   port: 'Port:',
   host: 'Host:',
   starting: 'Starting mongodb...\n',
-  started: `Starting mongodb complete. Logging to mongodb-${date}.log.\n`
+  started: `Starting mongodb complete. Logging to mongodb-${date}.log.\n`,
+  noFolder: `not exists. The folder was created.`,
 }
 
 clear()
 
-console.log(`${messages.platform} ${chalk.cyan.bold(process.platform)}`)
+if (!existsData) {
+  console.log(`${chalk.cyan.bold(config.data)} ${messages.noFolder}`)
+}
+
+if (!existsLogs) {
+  console.log(`${chalk.cyan.bold(config.logs)} ${messages.noFolder}`)
+}
+
+console.log(`\n${messages.platform} ${chalk.cyan.bold(process.platform)}`)
 console.log(`${messages.port} ${chalk.cyan.bold(db.port)}`)
 console.log(`${messages.host} ${chalk.cyan.bold(db.host)}\n`)
 spinner.start(chalk.cyan.bold(messages.starting))

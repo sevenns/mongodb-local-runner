@@ -15,7 +15,7 @@ const messages = {
 
 clear()
 
-console.log(`${messages.platform} ${chalk.cyan.bold(process.platform)}\n`)
+console.log(`\n${messages.platform} ${chalk.cyan.bold(process.platform)}\n`)
 spinner.start(chalk.cyan.bold(messages.stoping))
 
 if (process.platform === 'win32') {
